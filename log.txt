@@ -1,0 +1,4 @@
+[2017-05-11 21:48:02][ERROR] connect, Unknown database 'teddst_db'
+[2017-05-11 21:48:28][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-11 21:48:38][ERROR] query: SELfECT * FROM test_table, You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELfECT * FROM test_table' at line 1
+[2017-05-11 21:48:56][SUCCESS] query: SELECT * FROM test_table, 
