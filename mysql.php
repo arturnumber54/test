@@ -1,21 +1,21 @@
 <?php
 //
-// Класс работы с MySQL.
+// РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ СЃ MySQL.
 //
 class M_MySQL
 {
-	// Идентификатор соединения.
+	// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРµРґРёРЅРµРЅРёСЏ.
 	private $link;
 	
-	// Конструктор.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	public function __construct() {
 		$this->link = null;
 	}
 	
-	// Подключение.
+	// РџРѕРґРєР»СЋС‡РµРЅРёРµ.
 	public function connect() {
 		if($this->link == null) {
-			// Подключение к БД.
+			// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”.
 			$this->link = mysqli_connect($GLOBALS['host'], $GLOBALS['login'], $GLOBALS['pass'], $GLOBALS['db_name'])
 				or die($this->logging('connect', mysqli_connect_error()));
 			
@@ -25,7 +25,7 @@ class M_MySQL
 		}
 	}
 	
-	// Выполнение запроса.
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР°.
 	public function execute_query($query) {
 		if($this->link == null) {
 			$this->logging('query: ' . $query, 'No connect with data base');
@@ -43,7 +43,7 @@ class M_MySQL
 		return $result;
 	}
 	
-	// Запись в лог.
+	// Р—Р°РїРёСЃСЊ РІ Р»РѕРі.
 	public function logging($text, $error = '') {
 		if ($error == '') {
 			$status = 'SUCCESS';
