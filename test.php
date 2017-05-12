@@ -2,9 +2,8 @@
 require_once 'config.php';
 require_once 'mysql.php';
 
-$sql = new M_MySQl;
+$sql = new MySQl($GLOBALS['hostname'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['db_name']);
 
-$sql->connect();
 $res = $sql->execute_query('SELECT * FROM test_table');
 
 if(!$res){

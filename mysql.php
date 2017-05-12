@@ -1,33 +1,45 @@
 <?php
 //
-// РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ СЃ MySQL.
+// Класс работы с MySQL.
 //
-class M_MySQL
+class MySQL
 {
-	// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРµРґРёРЅРµРЅРёСЏ.
+	// Параметры подлючения к БД.
+	private $hostname;
+	private $username;
+	private $password;
+	private $db_name;
+	// Идентификатор соединения.
 	private $link;
 	
-	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
-	public function __construct() {
+	// Конструктор.
+	public function __construct($hostname, $username, $password, $db_name) {
+		$this->hostname = $hostname;
+		$this->username = $username;
+		$this->password = $password;
+		$this->db_name = $db_name;
 		$this->link = null;
+		// Cоединение с БД.
+		$this->connect();
 	}
 	
-	// РџРѕРґРєР»СЋС‡РµРЅРёРµ.
-	public function connect() {
+	// Подключение.
+	private function connect() {
 		if($this->link == null) {
-			// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”.
-			$this->link = mysqli_connect($GLOBALS['host'], $GLOBALS['login'], $GLOBALS['pass'], $GLOBALS['db_name'])
+			// Подключение к БД.
+			$this->link = mysqli_connect($this->hostname, $this->username, $this->password, $this->db_name)
 				or die($this->logging('connect', mysqli_connect_error()));
 			
 			if(!mysqli_set_charset($this->link, "utf8")) {
 				$this->logging('set charset', mysqli_error($this->link));
 			}
 		}
+		return true;
 	}
 	
-	// Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР°.
+	// Выполнение запроса.
 	public function execute_query($query) {
-		if($this->link == null) {
+		if(!$this->connect()) {
 			$this->logging('query: ' . $query, 'No connect with data base');
 			return null;
 		}
@@ -43,7 +55,7 @@ class M_MySQL
 		return $result;
 	}
 	
-	// Р—Р°РїРёСЃСЊ РІ Р»РѕРі.
+	// Запись в лог.
 	public function logging($text, $error = '') {
 		if ($error == '') {
 			$status = 'SUCCESS';

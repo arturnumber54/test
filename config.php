@@ -1,7 +1,7 @@
 <?php
 
 // Параметры подлючения к БД.
-$GLOBALS['host'] = 'localhost';
-$GLOBALS['login'] = 'root';
-$GLOBALS['pass'] = '';
+$GLOBALS['hostname'] = 'localhost';
+$GLOBALS['username'] = 'root';
+$GLOBALS['password'] = '';
 $GLOBALS['db_name'] = 'test_db';
