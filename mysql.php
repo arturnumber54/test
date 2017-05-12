@@ -1,32 +1,32 @@
 <?php
 //
-// Класс работы с MySQL.
+// РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ СЃ MySQL.
 //
 class MySQL
 {
-	// Параметры подлючения к БД.
+	// РџР°СЂР°РјРµС‚СЂС‹ РїРѕРґР»СЋС‡РµРЅРёСЏ Рє Р‘Р”.
 	private $hostname;
 	private $username;
 	private $password;
 	private $db_name;
-	// Идентификатор соединения.
+	// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРµРґРёРЅРµРЅРёСЏ.
 	private $link;
 	
-	// Конструктор.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	public function __construct($hostname, $username, $password, $db_name) {
 		$this->hostname = $hostname;
 		$this->username = $username;
 		$this->password = $password;
 		$this->db_name = $db_name;
 		$this->link = null;
-		// Cоединение с БД.
+		// CРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”.
 		$this->connect();
 	}
 	
-	// Подключение.
+	// РџРѕРґРєР»СЋС‡РµРЅРёРµ.
 	private function connect() {
 		if($this->link == null) {
-			// Подключение к БД.
+			// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”.
 			$this->link = mysqli_connect($this->hostname, $this->username, $this->password, $this->db_name)
 				or die($this->logging('connect', mysqli_connect_error()));
 			
@@ -37,7 +37,7 @@ class MySQL
 		return true;
 	}
 	
-	// Выполнение запроса.
+	// Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР°.
 	public function execute_query($query) {
 		if(!$this->connect()) {
 			$this->logging('query: ' . $query, 'No connect with data base');
@@ -55,7 +55,7 @@ class MySQL
 		return $result;
 	}
 	
-	// Запись в лог.
+	// Р—Р°РїРёСЃСЊ РІ Р»РѕРі.
 	public function logging($text, $error = '') {
 		if ($error == '') {
 			$status = 'SUCCESS';
