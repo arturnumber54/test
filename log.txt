@@ -3,3 +3,11 @@
 [2017-05-11 21:48:38][ERROR] query: SELfECT * FROM test_table, You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'SELfECT * FROM test_table' at line 1
 [2017-05-11 21:48:56][SUCCESS] query: SELECT * FROM test_table, 
 [2017-05-12 11:26:07][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 12:53:55][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:24:53][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:25:13][ERROR] connect, php_network_getaddresses: getaddrinfo failed: Этот хост неизвестен. 
+[2017-05-12 13:25:45][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:26:26][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:26:27][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:26:28][SUCCESS] query: SELECT * FROM test_table, 
+[2017-05-12 13:26:28][SUCCESS] query: SELECT * FROM test_table, 

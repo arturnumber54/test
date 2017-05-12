@@ -10,7 +10,7 @@ class MySQL
 	private $password;
 	private $db_name;
 	// Идентификатор соединения.
-	private $link;
+	private $link = null;
 	
 	// Конструктор.
 	public function __construct($hostname, $username, $password, $db_name) {
@@ -18,7 +18,6 @@ class MySQL
 		$this->username = $username;
 		$this->password = $password;
 		$this->db_name = $db_name;
-		$this->link = null;
 		// Cоединение с БД.
 		$this->connect();
 	}
@@ -34,15 +33,11 @@ class MySQL
 				$this->logging('set charset', mysqli_error($this->link));
 			}
 		}
-		return true;
 	}
 	
 	// Выполнение запроса.
 	public function execute_query($query) {
-		if(!$this->connect()) {
-			$this->logging('query: ' . $query, 'No connect with data base');
-			return null;
-		}
+		$this->connect();
 		
 		$result = mysqli_query($this->link, $query);
 								
